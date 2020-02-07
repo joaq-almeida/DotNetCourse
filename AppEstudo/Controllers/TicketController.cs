@@ -10,16 +10,19 @@ namespace AppEstudo.Controllers
 {
     public class TicketController : Controller
     {
-        private readonly UnitOfwork _unit;
+        //private readonly UnitOfwork _unit;
+        //public TicketController(UnitOfwork unit){ _unit = unit; }
 
-        public TicketController(UnitOfwork unit)
+        private readonly TicketRepository _ticket;
+
+        public TicketController(TicketRepository ticket)
         {
-            _unit = unit;
+            _ticket = ticket;
         }
 
         public IActionResult Index()
         {
-            var tickets = _unit.TicketRepository.GetAll();
+            var tickets = _ticket.GetAll();
             return View(tickets);
         }
 
@@ -30,7 +33,7 @@ namespace AppEstudo.Controllers
 
         public IActionResult Create(Ticket ticket)
         {
-            _unit.TicketRepository.Add(ticket);
+            _ticket.Add(ticket);
             return View();
         }
 
@@ -41,13 +44,13 @@ namespace AppEstudo.Controllers
 
         public IActionResult Edit(Ticket ticket)
         {
-            _unit.TicketRepository.Update(ticket);
+            _ticket.Update(ticket);
             return View();
         }
 
         public IActionResult Delete(Ticket ticket)
         {
-            _unit.TicketRepository.Delete(ticket);
+            _ticket.Delete(ticket);
             return View();
         }
     }

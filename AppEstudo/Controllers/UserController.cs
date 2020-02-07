@@ -10,15 +10,18 @@ namespace AppEstudo.Controllers
 {
     public class UserController : Controller
     {
-        private readonly UnitOfwork _unit;
+        //private readonly UnitOfwork _unit;
+        //public UserController(UnitOfwork unit) { _unit = unit; }
+        private readonly UserRepository _user;
 
-        public UserController(UnitOfwork unit)
+        public UserController(UserRepository user) 
         {
-            _unit = unit;
+            _user = user;
         }
         public IActionResult Index()
         {
-            return View();
+            var users = _user.GetAll();
+            return View(User);
         }
 
         public IActionResult Create()
@@ -29,7 +32,7 @@ namespace AppEstudo.Controllers
         [HttpPost]
         public IActionResult Create(User user)
         {
-            _unit.UserRepository.Add(user);
+            _user.Add(user);
             return View();
         }
 
@@ -40,13 +43,13 @@ namespace AppEstudo.Controllers
 
         public IActionResult Edit(User user)
         {
-            _unit.UserRepository.Update(user);
+            _user.Update(user);
             return View();
         }
 
         public IActionResult Delete(User user)
         {
-            _unit.UserRepository.Delete(user);
+            _user.Delete(user);
             return View();
         }
     }
