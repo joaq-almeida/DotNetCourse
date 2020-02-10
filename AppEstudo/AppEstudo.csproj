@@ -14,4 +14,8 @@
     <ProjectReference Include="..\AppEstudo.Infra\AppEstudo.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Ticket\" />
+  </ItemGroup>
+
 </Project>

@@ -13,9 +13,9 @@ namespace AppEstudo.Controllers
         //private readonly UnitOfwork _unit;
         //public TicketController(UnitOfwork unit){ _unit = unit; }
 
-        private readonly TicketRepository _ticket;
+        private readonly ITicketRepository _ticket;
 
-        public TicketController(TicketRepository ticket)
+        public TicketController(ITicketRepository ticket)
         {
             _ticket = ticket;
         }

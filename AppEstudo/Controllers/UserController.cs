@@ -12,16 +12,23 @@ namespace AppEstudo.Controllers
     {
         //private readonly UnitOfwork _unit;
         //public UserController(UnitOfwork unit) { _unit = unit; }
-        private readonly UserRepository _user;
+        private readonly IUserRepository _user;
 
-        public UserController(UserRepository user) 
+        public UserController(IUserRepository user) 
         {
             _user = user;
         }
         public IActionResult Index()
         {
-            var users = _user.GetAll();
-            return View(User);
+            var users = new User()
+            {
+                ID = 1,
+                Name = "joaquim",
+                Email = "joaquim@email.com",
+                Created = DateTime.Now,
+                Modified = DateTime.Now
+            };
+            return View(users);
         }
 
         public IActionResult Create()
@@ -33,7 +40,7 @@ namespace AppEstudo.Controllers
         public IActionResult Create(User user)
         {
             _user.Add(user);
-            return View();
+            return View("Home", "Index");
         }
 
         public IActionResult Edit()
