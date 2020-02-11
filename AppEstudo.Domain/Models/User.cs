@@ -13,7 +13,9 @@ namespace AppEstudo.Domain.Models
         [Required (ErrorMessage = "This field is required!")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        public DateTime Created { get; set; }
-        public DateTime Modified { get; set; }
+        [Required]
+        public DateTime Created { get; set; } = DateTime.Now;
+        [Required]
+        public DateTime Modified { get; set; } = DateTime.Now;
     }
 }

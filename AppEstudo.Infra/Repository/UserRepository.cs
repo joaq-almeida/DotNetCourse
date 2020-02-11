@@ -46,5 +46,10 @@ namespace AppEstudo.Infra.Repository
         {
             _context.User.Update(entity);
         }
+
+        public void Commit()
+        {
+            _context.SaveChanges();
+        }
     }
 }

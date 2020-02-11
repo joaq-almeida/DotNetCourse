@@ -46,5 +46,10 @@ namespace AppEstudo.Infra.Repository
         {
             _context.Ticket.Update(entity);
         }
+
+        public void Commit()
+        {
+            _context.SaveChanges();
+        }
     }
 }

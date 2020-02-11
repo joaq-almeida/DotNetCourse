@@ -13,5 +13,6 @@ namespace AppEstudo.Infra.Repository
         IEnumerable<T> GetAll();
         IEnumerable<T> Get(Expression<Func<T, bool>> predicate);
         T GetById(Expression<Func<T, bool>> predicate);
+        void Commit();
     }
 }

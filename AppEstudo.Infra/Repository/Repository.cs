@@ -20,13 +20,11 @@ namespace AppEstudo.Infra.Repository
         public void Add(T entity)
         {
             _context.Set<T>().Add(entity);
-            _context.SaveChanges();
         }
 
         public void Delete(T entity)
         {
             _context.Set<T>().Remove(entity);
-            _context.SaveChanges();
         }
 
         public IEnumerable<T> Get(Expression<Func<T, bool>> predicate)
@@ -48,6 +46,10 @@ namespace AppEstudo.Infra.Repository
         {
             _context.Entry(entity).State = EntityState.Modified;
             _context.Set<T>().Update(entity);
+        }
+
+        public void Commit()
+        {
             _context.SaveChanges();
         }
     }

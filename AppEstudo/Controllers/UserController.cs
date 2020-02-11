@@ -20,14 +20,7 @@ namespace AppEstudo.Controllers
         }
         public IActionResult Index()
         {
-            var users = new User()
-            {
-                ID = 1,
-                Name = "joaquim",
-                Email = "joaquim@email.com",
-                Created = DateTime.Now,
-                Modified = DateTime.Now
-            };
+            var users = _user.GetAll();
             return View(users);
         }
 
@@ -40,6 +33,7 @@ namespace AppEstudo.Controllers
         public IActionResult Create(User user)
         {
             _user.Add(user);
+            _user.Commit();
             return View("Home", "Index");
         }
 
