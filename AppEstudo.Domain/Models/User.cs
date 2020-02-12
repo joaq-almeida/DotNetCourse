@@ -14,8 +14,8 @@ namespace AppEstudo.Domain.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Required]
-        public DateTime Created { get; set; } = DateTime.Now;
+        public DateTime Created { get; set; }
         [Required]
-        public DateTime Modified { get; set; } = DateTime.Now;
+        public DateTime Modified { get; set; }
     }
 }

@@ -32,26 +32,39 @@ namespace AppEstudo.Controllers
         [HttpPost]
         public IActionResult Create(User user)
         {
+            user.Created = DateTime.Now;
+            user.Modified = DateTime.Now;
             _user.Add(user);
             _user.Commit();
-            return View("Home", "Index");
+            return RedirectToAction("Index");
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            return View();
+            var userEdit = _user.GetById(w => w.ID == id);
+            return View(userEdit);
         }
 
+        [HttpPost]
         public IActionResult Edit(User user)
         {
+            user.Modified = DateTime.Now;
             _user.Update(user);
-            return View();
+            _user.Commit();
+            return RedirectToAction("Index");
         }
 
         public IActionResult Delete(User user)
         {
             _user.Delete(user);
-            return View();
+            _user.Commit();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Details(int id)
+        {
+            var user = _user.GetById(w => w.ID == id);
+            return View(user);
         }
     }
 }

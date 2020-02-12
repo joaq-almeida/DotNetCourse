@@ -1,0 +1,65 @@
+﻿@model IEnumerable<AppEstudo.Domain.Models.Ticket>
+@{
+    ViewData["Title"] = "Tickets";
+}
+
+<h2>Tickets</h2>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Priority.Priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeExpent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modified)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Priority.Priority)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeExpent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modified)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { item.ID }) |
+                    @*@Html.ActionLink("Details", "Details", new { item.ID }) |*@
+                    @*@Html.ActionLink("Delete", "Delete", new { item.ID })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

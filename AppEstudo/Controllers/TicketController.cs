@@ -34,23 +34,28 @@ namespace AppEstudo.Controllers
         public IActionResult Create(Ticket ticket)
         {
             _ticket.Add(ticket);
-            return View();
+            _ticket.Commit();
+            return RedirectToAction("Index");
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            return View();
+            var ticket = _ticket.GetById(w => w.ID == id);
+            return View(ticket);
         }
 
+        [HttpPost]
         public IActionResult Edit(Ticket ticket)
         {
             _ticket.Update(ticket);
-            return View();
+            _ticket.Commit();
+            return RedirectToAction("Index");
         }
 
         public IActionResult Delete(Ticket ticket)
         {
             _ticket.Delete(ticket);
+            _ticket.Commit();
             return View();
         }
     }
