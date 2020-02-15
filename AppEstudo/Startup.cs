@@ -39,6 +39,9 @@ namespace AppEstudo
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITicketRepository, TicketRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IStatusRepository, StatusRepository>();
+            services.AddScoped<IPriorityRepository, PriorityRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
