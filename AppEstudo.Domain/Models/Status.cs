@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AppEstudo.Domain.Models
 {
-    public class TicketStatus
+    public class Status
     {
         public int ID { get; set; }
         public string Name { get; set; }
