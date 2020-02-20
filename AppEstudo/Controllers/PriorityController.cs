@@ -33,9 +33,11 @@ namespace AppEstudo.Controllers
         {
             priority.Created = DateTime.Now;
             priority.Modified = DateTime.Now;
+            priority.CreatedBy.ID = 1;
+            priority.ModifiedBy.ID = 1;
             _priority.Add(priority);
             _priority.Commit();
-            return View();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
@@ -50,7 +52,7 @@ namespace AppEstudo.Controllers
             priority.Modified = DateTime.Now;
             _priority.Update(priority);
             _priority.Commit();
-            return View();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(Priority priority)

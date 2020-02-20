@@ -43,6 +43,12 @@
                     @Html.DisplayFor(modelItem => item.Modified)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedBy.Name)
+                </td>
+                <td>
                     @Html.ActionLink("Edit", "Edit", new { item.ID }) |
                     @Html.ActionLink("Details", "Details", new { item.ID }) |
                     @Html.ActionLink("Delete", "Delete", new { item.ID })

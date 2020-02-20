@@ -33,9 +33,11 @@ namespace AppEstudo.Controllers
         {
             status.Created = DateTime.Now;
             status.Modified = DateTime.Now;
+            status.CreatedBy.ID = 1;
+            status.ModifiedBy.ID = 1;
             _status.Add(status);
             _status.Commit();
-            return View();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
@@ -50,7 +52,7 @@ namespace AppEstudo.Controllers
             status.Modified = DateTime.Now;
             _status.Update(status);
             _status.Commit();
-            return View();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(Status status)

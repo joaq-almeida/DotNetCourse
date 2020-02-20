@@ -33,9 +33,11 @@ namespace AppEstudo.Controllers
         {
             category.Created = DateTime.Now;
             category.Modified = DateTime.Now;
+            category.CreatedBy.ID = 1;
+            category.ModifiedBy.ID = 1;
             _category.Add(category);
             _category.Commit();
-            return View();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
@@ -50,7 +52,7 @@ namespace AppEstudo.Controllers
             category.Modified = DateTime.Now;
             _category.Update(category);
             _category.Commit();
-            return View();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(Category category)
